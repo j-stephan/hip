@@ -5,32 +5,39 @@
 HIP GPU isolation variables
 --------------------------------------------------------------------------------
 
-The GPU isolation environment variables in HIP are collected in the following table.
+Restricting the access of applications to a subset of GPUs, also known as GPU
+isolation, allows users to hide GPU resources from programs. The GPU isolation
+environment variables in HIP are collected in the following table.
 
 .. _hip-env-isolation:
 .. list-table::
     :header-rows: 1
-    :widths: 70,30
+    :widths: 50,30,20
 
     * - **Environment variable**
+      - **Links**
       - **Value**
 
     * - | ``ROCR_VISIBLE_DEVICES``
         | A list of device indices or UUIDs that will be exposed to applications.
+      - :doc:`GPU isolation <rocm:conceptual/gpu-isolation>`, :doc:`Setting the number of compute units <rocm:how-to/setting-cus>`
       - Example: ``0,GPU-DEADBEEFDEADBEEF``
 
     * - | ``GPU_DEVICE_ORDINAL``
         | Devices indices exposed to OpenCL and HIP applications.
+      - :doc:`GPU isolation <rocm:conceptual/gpu-isolation>`
       - Example: ``0,2``
 
     * - | ``HIP_VISIBLE_DEVICES`` or ``CUDA_VISIBLE_DEVICES``
         | Device indices exposed to HIP applications.
+      - :doc:`GPU isolation <rocm:conceptual/gpu-isolation>`, :doc:`HIP debugging <hip:how-to/debugging>`
       - Example: ``0,2``
 
 HIP profiling variables
 --------------------------------------------------------------------------------
 
-The profiling environment variables in HIP are collected in the following table.
+The profiling environment variables in HIP are collected in the following table. For
+more information, check :doc:`setting the number of CUs page <rocm:how-to/setting-cus>`.
 
 .. _hip-env-prof:
 .. list-table::
@@ -41,25 +48,24 @@ The profiling environment variables in HIP are collected in the following table.
       - **Value**
 
     * - | ``HSA_CU_MASK``
-        | Sets the mask on a lower level of queue creation in the driver,
-        | this mask will also be set for queues being profiled.
+        | Sets the mask on a lower level of queue creation in the driver, this mask will also be set for queues being profiled.
       - Example: ``1:0-8``
 
     * - | ``ROC_GLOBAL_CU_MASK``
-        | Sets the mask on queues created by the HIP or the OpenCL runtimes,
-        | this mask will also be set for queues being profiled.
+        | Sets the mask on queues created by the HIP or the OpenCL runtimes, this mask will also be set for queues being profiled.
       - Example: ``0xf``, enables only 4 CUs
 
     * - | ``HIP_FORCE_QUEUE_PROFILING``
-        | Used to run the app as if it were run in rocprof. Forces command queue
-        | profiling on by default.
+        | Used to run the app as if it were run in rocprof. Forces command queue profiling on by default.
       - | 0: Disable
         | 1: Enable
 
 HIP debug variables
 --------------------------------------------------------------------------------
 
-The debugging environment variables in HIP are collected in the following table.
+The debugging environment variables in HIP are collected in the following table. For
+more information, check :doc:`hip:how-to/logging`, :doc:`hip:how-to/debugging`
+and :doc:`GPU isolation <rocm:conceptual/gpu-isolation>`.
 
 .. _hip-env-debug:
 .. list-table::
@@ -158,11 +164,19 @@ The debugging environment variables in HIP are collected in the following table.
         number does not apply to hardware queues that are created for CU-masked HIP streams, or
         cooperative queues for HIP Cooperative Groups (single queue per device).
 
+The HIP debug variables are used on :doc:`hip:how-to/logging`, :doc:`hip:how-to/debugging`
+and :doc:`GPU isolation <rocm:conceptual/gpu-isolation>` pages.
+
 HIP memory management related variables
 --------------------------------------------------------------------------------
 
 The memory management related environment variables in HIP are collected in the
-following table.
+following table. The ``HIP_HOST_COHERENT`` variable linked at the following
+pages:
+
+- :ref:`Coherence control <hip:hip-memory-coherence-table>`
+
+- :ref:`Memory allocation flags <hip:memory_allocation_flags>`
 
 .. _hip-env-memory:
 .. list-table::
@@ -274,5 +288,5 @@ different features in HIP.
 
     * - | ``HIPRTC_COMPILE_OPTIONS_APPEND``
         | Sets compile options needed for ``hiprtc`` compilation.
-      - None
+      - Unset by default.
       - ``--gpu-architecture=gfx906:sramecc+:xnack``, ``-fgpu-rdc``

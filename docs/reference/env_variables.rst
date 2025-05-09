@@ -12,8 +12,9 @@ on AMD platform, which are grouped by functionality.
 GPU isolation variables
 ================================================================================
 
-The GPU isolation environment variables in HIP are collected in the following table.
-For more information, check :doc:`GPU isolation page <rocm:conceptual/gpu-isolation>`.
+Restricting the access of applications to a subset of GPUs, also known as GPU
+isolation, allows users to hide GPU resources from programs. The GPU isolation
+environment variables in HIP are collected in the following table.
 
 .. include-table:: data/env_variables_hip.rst
     :table: hip-env-isolation
@@ -21,8 +22,8 @@ For more information, check :doc:`GPU isolation page <rocm:conceptual/gpu-isolat
 Profiling variables
 ================================================================================
 
-The profiling environment variables in HIP are collected in the following table. For
-more information, check :doc:`setting the number of CUs page <rocm:how-to/setting-cus>`.
+The profiling environment variables in HIP are collected in the following table.
+For more information, check :doc:`setting the number of CUs page <rocm:how-to/setting-cus>`.
 
 .. include-table:: data/env_variables_hip.rst
     :table: hip-env-prof
@@ -30,8 +31,9 @@ more information, check :doc:`setting the number of CUs page <rocm:how-to/settin
 Debug variables
 ================================================================================
 
-The debugging environment variables in HIP are collected in the following table. For
-more information, check :ref:`debugging_with_hip`.
+The debugging environment variables in HIP are collected in the following table.
+For more information, check :doc:`hip:how-to/logging`, :doc:`hip:how-to/debugging`
+and :doc:`GPU isolation <rocm:conceptual/gpu-isolation>`.
 
 .. include-table:: data/env_variables_hip.rst
     :table: hip-env-debug
@@ -40,7 +42,12 @@ Memory management related variables
 ================================================================================
 
 The memory management related environment variables in HIP are collected in the
-following table.
+following table. The ``HIP_HOST_COHERENT`` variable linked at the following
+pages:
+
+- :ref:`Coherence control <hip:hip-memory-coherence-table>`
+
+- :ref:`Memory allocation flags <hip:memory_allocation_flags>`
 
 .. include-table:: data/env_variables_hip.rst
     :table: hip-env-memory
