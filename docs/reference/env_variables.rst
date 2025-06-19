@@ -12,51 +12,24 @@ on AMD platform, which are grouped by functionality.
 GPU isolation variables
 ================================================================================
 
-Restricting the access of applications to a subset of GPUs, also known as GPU
-isolation, allows users to hide GPU resources from programs. The GPU isolation
-environment variables in HIP are collected in the following table.
-
-.. include-table:: data/env_variables_hip.rst
-    :table: hip-env-isolation
+.. include:: ../data/reference/env_variables/gpu_isolation_hip_env.rst
 
 Profiling variables
 ================================================================================
 
-The profiling environment variables in HIP are collected in the following table.
-For more information, check :doc:`setting the number of CUs page <rocm:how-to/setting-cus>`.
-
-.. include-table:: data/env_variables_hip.rst
-    :table: hip-env-prof
+.. include:: ../data/reference/env_variables/profiling_hip_env.rst
 
 Debug variables
 ================================================================================
 
-The debugging environment variables in HIP are collected in the following table.
-For more information, check :doc:`hip:how-to/logging`, :doc:`hip:how-to/debugging`
-and :doc:`GPU isolation <rocm:conceptual/gpu-isolation>`.
-
-.. include-table:: data/env_variables_hip.rst
-    :table: hip-env-debug
+.. include:: ../data/reference/env_variables/debug_hip_env.rst
 
 Memory management related variables
 ================================================================================
 
-The memory management related environment variables in HIP are collected in the
-following table. The ``HIP_HOST_COHERENT`` variable linked at the following
-pages:
-
-- :ref:`Coherence control <hip:hip-memory-coherence-table>`
-
-- :ref:`Memory allocation flags <hip:memory_allocation_flags>`
-
-.. include-table:: data/env_variables_hip.rst
-    :table: hip-env-memory
+.. include:: ../data/reference/env_variables/memory_management_hip_env.rst
 
 Other useful variables
 ================================================================================
 
-The following table lists environment variables that are useful but relate to
-different features.
-
-.. include-table:: data/env_variables_hip.rst
-    :table: hip-env-other
+.. include:: ../data/reference/env_variables/miscellaneous_hip_env.rst
