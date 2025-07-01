@@ -98,6 +98,3 @@ and :doc:`GPU isolation <rocm:conceptual/gpu-isolation>`.
         the same hardware queues for the new streams in a round-robin manner. Note that this maximum
         number does not apply to hardware queues that are created for CU-masked HIP streams, or
         cooperative queues for HIP Cooperative Groups (single queue per device).
-
-The HIP debug variables are used on :doc:`hip:how-to/logging`, :doc:`hip:how-to/debugging`
-and :doc:`GPU isolation <rocm:conceptual/gpu-isolation>` pages.
