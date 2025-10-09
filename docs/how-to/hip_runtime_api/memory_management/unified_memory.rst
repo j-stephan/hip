@@ -93,6 +93,11 @@ systems it is still possible to use unified memory allocators that do not
 provide managed memory features; see
 :ref:`memory allocation approaches in unified memory` for more details.
 
+.. attention::
+  Question for HIP team: Evidently there are circumstances which disable
+  managed memory even if the GPU supports it. What can cause managed memory
+  to be disabled entirely? A kernel setting?
+
 Managed memory is supported on Linux by all modern AMD GPUs from the Vega
 series onward, as shown in the following table. Managed memory can be
 explicitly allocated using :cpp:func:`hipMallocManaged()` or marking variables
@@ -166,6 +171,13 @@ system requirements` and :ref:`checking unified memory support`.
   The ``__managed__`` declaration specifier, which serves as its counterpart,
   can be utilized for static allocation.
 
+.. attention::
+  On systems without managed memory support (the device attribute
+  :cpp:enumerator:`hipDeviceAttributeManagedMemory` is set to ``0``),
+  :cpp:func:`hipMallocManaged` still works but behaves the same as
+  :cpp:func:`hipMallocHost`. ``__managed__`` variables are **not** supported on
+  these systems.
+
 - **System allocated unified memory**
 
   Starting with CDNA2, the ``new``, ``malloc()``, and ``allocate()`` (Fortran) system allocators allow
@@ -207,8 +219,8 @@ functions on ROCm and CUDA, both with and without HMM support.
         - device
         - zero copy [zc]_
       * - :cpp:func:`hipMallocManaged()`, ``__managed__``
-        - pinned host
-        - zero copy [zc]_
+        - pinned host [nm]_
+        - zero copy [zc]_ [nm_]
         - first touch
         - page-fault migration
       * - :cpp:func:`hipHostRegister()`
@@ -265,6 +277,8 @@ functions on ROCm and CUDA, both with and without HMM support.
         the host. Instead only the requested memory is transferred, without
         making an explicit copy, like a normal memory access, hence the term
         "zero copy".
+.. [nm] ``__managed__`` variables are not available on systems without managed
+        memory support.
 
 .. _checking unified memory support:
 
